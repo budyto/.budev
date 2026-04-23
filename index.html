@@ -113,7 +113,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&family=Instrument+Serif:ital@0;1&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Instrument+Serif:ital@0;1&display=swap"
     rel="stylesheet">
 
   <style>
@@ -2617,6 +2617,308 @@
       background: var(--magenta);
       color: var(--bg);
     }
+    /* ============ HERO V2 (video background + shiny text) ============ */
+    .hero-v2 {
+      position: relative;
+      min-height: 100vh;
+      height: 100vh;
+      background: #000000;
+      overflow: hidden;
+      font-family: 'Inter', 'Bricolage Grotesque', sans-serif;
+      isolation: isolate;
+    }
+
+    .hero-v2-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .hero-v2-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-v2-inner {
+      position: relative;
+      z-index: 10;
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 1.25rem 1.25rem 2.5rem;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media (min-width: 768px) {
+      .hero-v2-inner { padding: 1.5rem 2rem 3rem; }
+    }
+
+    /* Nav */
+    .nav-v2 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo-v2 {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .logo-v2-circle {
+      width: 1.85rem;
+      height: 1.85rem;
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .logo-v2-circle::after {
+      content: '';
+      width: 0.55rem;
+      height: 0.55rem;
+      background: #ffffff;
+      border-radius: 50%;
+    }
+
+    .nav-pill {
+      display: none;
+      align-items: center;
+      gap: 0.15rem;
+      padding: 0.35rem;
+      border: 1px solid rgb(55, 65, 81);
+      border-radius: 9999px;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .nav-pill a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      padding: 0.5rem 0.95rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      transition: color 0.25s ease, background 0.25s ease;
+    }
+
+    .nav-pill a:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-pill a svg {
+      transition: transform 0.25s ease;
+    }
+
+    .nav-pill a:hover svg {
+      transform: translate(2px, -2px);
+    }
+
+    .hamburger-v2 {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      padding: 0;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgb(55, 65, 81);
+      border-radius: 9999px;
+      color: #ffffff;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    @media (min-width: 1024px) {
+      .nav-pill { display: inline-flex; }
+      .hamburger-v2 { display: none; }
+    }
+
+    /* Mid copy row */
+    .hero-v2-mid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding-top: 1.75rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    .hero-v2-mid p { margin: 0; max-width: 32rem; }
+
+    @media (min-width: 1024px) {
+      .hero-v2-mid {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 3rem;
+        font-size: 1rem;
+        padding-top: 2.5rem;
+      }
+      .hero-v2-mid p:last-child {
+        text-align: right;
+        max-width: 18rem;
+      }
+    }
+
+    /* Center stage */
+    .hero-v2-center {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .hero-v2-kicker {
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: -0.005em;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1.25rem;
+      font-weight: 500;
+    }
+
+    @media (min-width: 768px) {
+      .hero-v2-kicker { font-size: 0.875rem; margin-bottom: 1.5rem; }
+    }
+
+    .hero-v2-title {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      color: #ffffff;
+      line-height: 0.85;
+      letter-spacing: -0.05em;
+      font-size: clamp(3rem, 11vw, 8rem);
+    }
+
+    @media (min-width: 1280px) {
+      .hero-v2-title { font-size: clamp(6rem, 10vw, 9rem); }
+    }
+
+    .hero-v2-title .line { display: block; }
+
+    /* Shiny Text (CSS-only, mimics framer-motion sweep) */
+    .shiny-text {
+      display: inline-block;
+      background: linear-gradient(100deg,
+          #64CEFB 0%,
+          #64CEFB 40%,
+          #ffffff 50%,
+          #64CEFB 60%,
+          #64CEFB 100%);
+      background-size: 200% 100%;
+      background-position: 200% 0;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      animation: shiny-sweep 3s linear infinite;
+    }
+
+    @keyframes shiny-sweep {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .shiny-text { animation: none; background-position: 50% 0; }
+    }
+
+    /* CTA */
+    .hero-v2-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 1.75rem;
+      padding: 0.75rem 1.5rem;
+      background: #000000;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 9999px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+
+    @media (min-width: 768px) {
+      .hero-v2-cta { padding: 1rem 2rem; margin-top: 2rem; }
+    }
+
+    .hero-v2-cta:hover {
+      background: #111111;
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .hero-v2-cta svg { transition: transform 0.3s ease; }
+    .hero-v2-cta:hover svg { transform: translateX(4px); }
+
+    /* Mobile menu dropdown (simple) */
+    .nav-mobile {
+      display: none;
+      position: absolute;
+      top: 4.5rem;
+      right: 1.25rem;
+      z-index: 20;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding: 0.75rem;
+      border: 1px solid rgb(55, 65, 81);
+      border-radius: 1.25rem;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      min-width: 11rem;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      padding: 0.6rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+    }
+
+    .nav-mobile a:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    @media (min-width: 1024px) {
+      .nav-mobile { display: none !important; }
+    }
   </style>
 </head>
 
@@ -2642,59 +2944,79 @@
   </div>
 
   <!-- HEADER -->
-  <header class="header">
-    <a href="#top" class="logo">
-      <span class="logo-dot"></span>
-      Budev
-    </a>
-    <nav class="nav">
-      <a href="#servicios">Servicios</a>
-      <a href="#trabajos">Trabajos</a>
-      <a href="#sobre-mi">Nosotros</a>
-      <a href="#contacto" class="nav-cta">Contacto</a>
-    </nav>
-  </header>
+  <!-- Placeholder invisible para JS legacy (header scroll effect) -->
+  <header class="header" hidden aria-hidden="true"></header>
 
   <main>
 
-  <!-- HERO -->
-  <section class="hero" id="top">
-    <!-- Blobs tipo lámpara de lava -->
-    <div class="lava">
-      <div class="blob blob-1"></div>
-      <div class="blob blob-2"></div>
-      <div class="blob blob-3"></div>
-      <div class="blob blob-4"></div>
-    </div>
+  <!-- HERO V2 -->
+  <section class="hero hero-v2" id="top">
+    <!-- Video de fondo: REEMPLAZA este src por tu URL de CloudFront -->
+    <video class="hero-v2-video" autoplay loop muted playsinline preload="auto" poster="">
+      <source src="https://videos.pexels.com/video-files/3129957/3129957-hd_1920_1080_25fps.mp4" type="video/mp4">
+    </video>
+    <div class="hero-v2-overlay"></div>
 
-    <div class="hero-content">
-      <div class="hero-kicker">Desarrollo Web + IA · Buenos Aires · 24/7</div>
-      <h1 class="hero-title">
-        <div class="line"><span>Diseño</span></div>
-        <div class="line"><span class="gradient-word">páginas&nbsp;web</span></div>
-        <div class="line"><span><em id="typeword" class="typeword">impactantes</em><span class="caret">|</span></span>
-        </div>
-      </h1>
-      <div class="hero-bottom">
-        <p class="hero-sub">
-          Soy <strong>Budev</strong>. Construyo sitios web, e-commerce y aplicaciones a medida potenciadas con
-          inteligencia artificial. Tu marca, en otro nivel.
-        </p>
-        <div class="hero-ctas">
-          <a href="#contacto" class="btn btn-primary">
-            Empecemos
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M13 6l6 6-6 6" />
+    <div class="hero-v2-inner">
+      <!-- Navegación -->
+      <nav class="nav-v2" aria-label="Navegación principal">
+        <a href="https://budev.online/" class="logo-v2" aria-label="Budev — Inicio">
+          <span class="logo-v2-circle" aria-hidden="true"></span>
+          Budev
+        </a>
+
+        <div class="nav-pill">
+          <a href="#top">Inicio</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#trabajos">Portfolio</a>
+          <a href="#sobre-mi">Sobre Mí</a>
+          <a href="#contacto">
+            Contacto
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M7 17L17 7M7 7h10v10" />
             </svg>
           </a>
-          <a href="#trabajos" class="btn btn-ghost">Ver mis trabajos</a>
         </div>
+
+        <button type="button" class="hamburger-v2" id="hamburger-v2" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M3 6h18M3 12h18M3 18h18" />
+          </svg>
+        </button>
+
+        <div class="nav-mobile" id="nav-mobile">
+          <a href="#top">Inicio</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#trabajos">Portfolio</a>
+          <a href="#sobre-mi">Sobre Mí</a>
+          <a href="#contacto">Contacto →</a>
+        </div>
+      </nav>
+
+      <!-- Dos columnas de copy superior -->
+      <div class="hero-v2-mid">
+        <p>Desarrollo web full-stack a medida. Transformo tu visión en experiencias digitales escalables, de alto rendimiento y preparadas para el futuro.</p>
+        <p>Soluciones web optimizadas.</p>
+      </div>
+
+      <!-- Centro -->
+      <div class="hero-v2-center">
+        <div class="hero-v2-kicker">DISPONIBILIDAD PARA NUEVOS PROYECTOS</div>
+        <h1 class="hero-v2-title">
+          <span class="line">Construye tu</span>
+          <span class="line shiny-text">Presencia Digital.</span>
+        </h1>
+        <a href="#contacto" class="hero-v2-cta">
+          Inicia tu Proyecto
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
       </div>
     </div>
-    <div class="scroll-hint">
-      <span>Scroll</span>
-      <div class="scroll-hint-line"></div>
-    </div>
+
+    <!-- Placeholder invisible para JS legacy (typewriter) -->
+    <em id="typeword" hidden aria-hidden="true"></em>
   </section>
 
   <!-- MARQUEE -->
@@ -3651,6 +3973,22 @@
 
       lastScroll = s;
     }, { passive: true });
+
+    /* ========== HERO V2: MENÚ HAMBURGUESA MÓVIL ========== */
+    const hamburgerBtn = document.getElementById('hamburger-v2');
+    const navMobile = document.getElementById('nav-mobile');
+    if (hamburgerBtn && navMobile) {
+      hamburgerBtn.addEventListener('click', () => {
+        const isOpen = navMobile.classList.toggle('open');
+        hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+      });
+      navMobile.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMobile.classList.remove('open');
+          hamburgerBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
   </script>
 
 </body>
