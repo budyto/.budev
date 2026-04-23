@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Budev — Desarrollador Fullstack + IA</title>
+  <title>Budev — Desarrollador Web + IA en Buenos Aires</title>
   <meta name="description"
-    content="Budev — Desarrollo web, apps a medida y branding potenciado por IA. Sitios que impactan, convierten y escalan tu negocio.">
+    content="Desarrollador web en Buenos Aires. Sitios a medida, e-commerce y apps potenciadas con IA. Trabajo con emprendedores y empresas de CABA y todo el país.">
 
   <!-- Open Graph / Redes Sociales -->
-  <meta property="og:title" content="Budev — Desarrollador Fullstack + IA">
+  <meta property="og:title" content="Budev — Desarrollador Web + IA en Buenos Aires">
   <meta property="og:description" content="Construyo sitios web, e-commerce y aplicaciones a medida potenciadas con inteligencia artificial.">
   <meta property="og:image" content="https://budev.online/imagenes/social-banner.jpg">
   <meta property="og:url" content="https://budev.online">
@@ -17,7 +17,7 @@
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Budev — Desarrollador Fullstack + IA">
+  <meta name="twitter:title" content="Budev — Desarrollador Web + IA en Buenos Aires">
   <meta name="twitter:description" content="Construyo sitios web, e-commerce y aplicaciones a medida potenciadas con inteligencia artificial.">
   <meta name="twitter:image" content="https://budev.online/imagenes/social-banner.jpg">
 
@@ -38,9 +38,22 @@
       "@type": "Person",
       "name": "Budev"
     },
-    "areaServed": {
-      "@type": "Country",
-      "name": "Argentina"
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Buenos Aires",
+        "sameAs": "https://www.wikidata.org/wiki/Q1486"
+      },
+      {
+        "@type": "Country",
+        "name": "Argentina"
+      }
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Ciudad Autónoma de Buenos Aires",
+      "addressRegion": "CABA",
+      "addressCountry": "AR"
     },
     "contactPoint": {
       "@type": "ContactPoint",
@@ -90,6 +103,11 @@
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/imagenes/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/imagenes/favicon.svg">
+
+  <!-- DNS prefetch para dominios externos -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="dns-prefetch" href="//wa.me">
 
   <!-- Fonts: display distintiva + mono para acentos + sans para cuerpo -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -203,76 +221,53 @@
       }
     }
 
-    /* ============ LOADER: EFECTO ESCALERA + TELÓN ============ */
+    /* ============ LOADER: B CON EFECTO STROKE + TELÓN ============ */
     .loader {
       position: fixed;
       inset: 0;
       z-index: 9999;
       background: #000;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 32px;
       overflow: hidden;
     }
 
-    .loader-stack {
-      text-align: center;
-      font-family: var(--font-display);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 0.9;
-      text-transform: uppercase;
-      color: #fff;
-      font-size: clamp(2rem, 7vw, 5rem);
+    .loader-logo {
+      width: clamp(80px, 11vw, 130px);
+      height: auto;
+      overflow: visible;
     }
 
-    .loader-stack span {
-      display: block;
-      opacity: 0;
-      transform: translateX(-40px);
-      animation: stair-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    .loader-b {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 520;
+      stroke-dashoffset: 520;
+      animation: draw-b 1.1s cubic-bezier(0.76, 0, 0.24, 1) forwards,
+                 fill-b 0.45s 1.05s ease forwards;
     }
 
-    .loader-stack span:nth-child(1) {
-      animation-delay: 0.1s;
+    @keyframes draw-b {
+      to { stroke-dashoffset: 0; }
     }
 
-    .loader-stack span:nth-child(2) {
-      animation-delay: 0.35s;
-      padding-left: 3ch;
-    }
-
-    .loader-stack span:nth-child(3) {
-      animation-delay: 0.6s;
-      padding-left: 6ch;
-    }
-
-    .loader-stack span:nth-child(4) {
-      animation-delay: 0.85s;
-      padding-left: 9ch;
-    }
-
-    .loader-stack span:nth-child(5) {
-      animation-delay: 1.1s;
-      padding-left: 12ch;
-    }
-
-    @keyframes stair-in {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
+    @keyframes fill-b {
+      to { fill: #fff; }
     }
 
     .loader-progress {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
       font-family: var(--font-mono);
-      font-size: 12px;
-      letter-spacing: 0.3em;
-      color: rgba(255, 255, 255, 0.5);
+      font-size: 11px;
+      letter-spacing: 0.4em;
+      color: rgba(255, 255, 255, 0.4);
+      min-width: 48px;
+      text-align: center;
     }
 
     /* Telón: dos paneles que se abren verticalmente */
@@ -2633,14 +2628,11 @@
 
   <!-- LOADER -->
   <div class="loader" id="loader">
-    <div class="loader-stack">
-      <span>Diseño</span>
-      <span>Web</span>
-      <span>Profesional</span>
-      <span>Para Tu</span>
-      <span>Marca_</span>
-    </div>
-    <div class="loader-progress" id="loaderProgress">LOADING · 00%</div>
+    <svg class="loader-logo" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path class="loader-b"
+            d="M 22 12 L 22 108 L 60 108 C 88 108 92 66 68 60 C 88 54 84 12 60 12 Z" />
+    </svg>
+    <div class="loader-progress" id="loaderProgress">00%</div>
   </div>
 
   <!-- TELÓN -->
@@ -2676,7 +2668,7 @@
     </div>
 
     <div class="hero-content">
-      <div class="hero-kicker">Desarrollo Web + IA · 24/7</div>
+      <div class="hero-kicker">Desarrollo Web + IA · Buenos Aires · 24/7</div>
       <h1 class="hero-title">
         <div class="line"><span>Diseño</span></div>
         <div class="line"><span class="gradient-word">páginas&nbsp;web</span></div>
@@ -2884,15 +2876,19 @@
                 <div class="mockup-url">web-creditos.app</div>
               </div>
               <div class="mockup-screen" style="background: linear-gradient(135deg, #0a1128 0%, #001f54 100%);">
-                <img src="imagenes/mym-desktop.png" alt="MyM Créditos desktop" class="mockup-img" loading="lazy"
-                  data-fallback="mym-desktop">
+                <picture>
+                  <source srcset="imagenes/mym-desktop.webp" type="image/webp">
+                  <img src="imagenes/mym-desktop.png" alt="MyM Créditos desktop" class="mockup-img" loading="lazy" width="1898" height="910" data-fallback="mym-desktop">
+                </picture>
               </div>
             </div>
             <div class="mockup-mobile">
               <div class="mockup-notch"></div>
               <div class="mockup-screen-mobile" style="background: linear-gradient(135deg, #0a1128 0%, #001f54 100%);">
-                <img src="imagenes/mym-mobile.png" alt="MyM Créditos mobile" class="mockup-img" loading="lazy"
-                  data-fallback="mym-mobile">
+                <picture>
+                  <source srcset="imagenes/mym-mobile.webp" type="image/webp">
+                  <img src="imagenes/mym-mobile.png" alt="MyM Créditos mobile" class="mockup-img" loading="lazy" width="408" height="799" data-fallback="mym-mobile">
+                </picture>
               </div>
             </div>
           </a>
@@ -2928,15 +2924,19 @@
                 <div class="mockup-url">vladomerkel.com</div>
               </div>
               <div class="mockup-screen" style="background: linear-gradient(135deg, #1a0e0e 0%, #3d1a1a 100%);">
-                <img src="imagenes/vlado-desktop.png" alt="Vladimir Merkel desktop" class="mockup-img" loading="lazy"
-                  data-fallback="vlado-desktop">
+                <picture>
+                  <source srcset="imagenes/vlado-desktop.webp" type="image/webp">
+                  <img src="imagenes/vlado-desktop.png" alt="Vladimir Merkel desktop" class="mockup-img" loading="lazy" width="1903" height="916" data-fallback="vlado-desktop">
+                </picture>
               </div>
             </div>
             <div class="mockup-mobile">
               <div class="mockup-notch"></div>
               <div class="mockup-screen-mobile" style="background: linear-gradient(135deg, #1a0e0e 0%, #3d1a1a 100%);">
-                <img src="imagenes/vlado-mobile.png" alt="Vladimir Merkel mobile" class="mockup-img" loading="lazy"
-                  data-fallback="vlado-mobile">
+                <picture>
+                  <source srcset="imagenes/vlado-mobile.webp" type="image/webp">
+                  <img src="imagenes/vlado-mobile.png" alt="Vladimir Merkel mobile" class="mockup-img" loading="lazy" width="263" height="570" data-fallback="vlado-mobile">
+                </picture>
               </div>
             </div>
           </a>
@@ -2972,15 +2972,19 @@
                 <div class="mockup-url">electromym.com</div>
               </div>
               <div class="mockup-screen" style="background: linear-gradient(135deg, #0d1f12 0%, #1a4025 100%);">
-                <img src="imagenes/electromym-desktop.png" alt="Electro MyM desktop" class="mockup-img" loading="lazy"
-                  data-fallback="electromym-desktop">
+                <picture>
+                  <source srcset="imagenes/electromym-desktop.webp" type="image/webp">
+                  <img src="imagenes/electromym-desktop.png" alt="Electro MyM desktop" class="mockup-img" loading="lazy" width="1898" height="919" data-fallback="electromym-desktop">
+                </picture>
               </div>
             </div>
             <div class="mockup-mobile">
               <div class="mockup-notch"></div>
               <div class="mockup-screen-mobile" style="background: linear-gradient(135deg, #0d1f12 0%, #1a4025 100%);">
-                <img src="imagenes/electromym-mobile.png" alt="Electro MyM mobile" class="mockup-img" loading="lazy"
-                  data-fallback="electromym-mobile">
+                <picture>
+                  <source srcset="imagenes/electromym-mobile.webp" type="image/webp">
+                  <img src="imagenes/electromym-mobile.png" alt="Electro MyM mobile" class="mockup-img" loading="lazy" width="271" height="564" data-fallback="electromym-mobile">
+                </picture>
               </div>
             </div>
           </a>
@@ -3544,20 +3548,37 @@
     const curtain = document.getElementById('curtain');
     const progress = document.getElementById('loaderProgress');
 
+    const LOADER_MIN_TIME = 1500; // tiempo mínimo para que la animación de la B se complete
+    const loaderStart = performance.now();
+
     let pct = 0;
     const progressInterval = setInterval(() => {
-      pct += Math.random() * 18;
+      pct += Math.random() * 22;
       if (pct >= 100) { pct = 100; clearInterval(progressInterval); }
-      progress.textContent = `LOADING · ${String(Math.floor(pct)).padStart(2, '0')}%`;
-    }, 120);
+      progress.textContent = `${String(Math.floor(pct)).padStart(2, '0')}%`;
+    }, 110);
 
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        loader.classList.add('hidden');
-        curtain.classList.add('open');
-        setTimeout(() => { loader.style.display = 'none'; }, 500);
-      }, 1800);
-    });
+    const hideLoader = () => {
+      clearInterval(progressInterval);
+      progress.textContent = '100%';
+      loader.classList.add('hidden');
+      curtain.classList.add('open');
+      setTimeout(() => { loader.style.display = 'none'; }, 500);
+    };
+
+    // Espera a que cargue la página; si carga antes del tiempo mínimo, cumple con el mínimo.
+    // Si carga después, se oculta inmediatamente. No bloquea el LCP más de lo necesario.
+    const onReady = () => {
+      const elapsed = performance.now() - loaderStart;
+      const wait = Math.max(0, LOADER_MIN_TIME - elapsed);
+      setTimeout(hideLoader, wait);
+    };
+
+    if (document.readyState === 'complete') {
+      onReady();
+    } else {
+      window.addEventListener('load', onReady);
+    }
 
     /* ========== TYPEWRITER EN HERO ========== */
     const words = ['impactantes', 'a tu medida', 'del futuro', 'profesionales', 'para tu marca', 'empresariales'];
